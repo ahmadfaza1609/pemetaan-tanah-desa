@@ -31,7 +31,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="profile-info">
                                 <div class="info">
-                                    <h6>Ahmad Faza Hazmi</h6>
+                                    <h6>Admin</h6>
                                     <div class="image">
                                         <img src="<?= base_url() ?>style-admin/assets/images/profile/profile-image.png"
                                             alt="" />
@@ -48,18 +48,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#0">
-                                    <i class="lni lni-alarm"></i> Notifications
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                            </li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-                            </li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                                <a href="<?= base_url('auth/logout') ?>"> <i class="lni lni-exit"></i> Sign Out </a>
                             </li>
                         </ul>
                     </div>

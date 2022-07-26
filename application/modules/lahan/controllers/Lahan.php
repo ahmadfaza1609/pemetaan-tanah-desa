@@ -8,6 +8,7 @@ class Lahan extends MX_Controller
     {
         parent::__construct();
         //Load Dependencies
+        $this->load->library('form_validation');
         $this->load->model('m_lahan');
     }
 
@@ -74,7 +75,7 @@ class Lahan extends MX_Controller
                 );
                 $this->m_lahan->add($data);
                 $this->session->set_flashdata('sukses', 'Data Berhasil disimpan !!');
-                redirect('lahan/add');
+                redirect('lahan/');
             }
         }
         $data = array(
@@ -136,7 +137,7 @@ class Lahan extends MX_Controller
                 );
                 $this->m_lahan->edit($data);
                 $this->session->set_flashdata('sukses', 'Data Berhasil diedit !!');
-                redirect('lahan');
+                redirect('lahan/');
             }
             // foto tidak diganti
             $data = array(

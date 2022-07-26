@@ -1,6 +1,7 @@
 <div class="navbar-logo">
-    <a href="<?= base_url() ?>style-admin/index.html">
-        <img src="<?= base_url() ?>style-admin/assets/images/logo/logo.svg" alt="logo" />
+    <a href="#">
+        <img src="<?= base_url() ?>style-admin/assets/images/logo/logoKabBengkalis.png" width="20%" alt="logo" />
+        <span>Pemetaan Dan Arsip </br> Desa Bantan Tengah</span>
     </a>
 </div>
 <nav class="sidebar-nav">

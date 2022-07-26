@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="<?= base_url() ?>style-admin/assets/images/favicon.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?= base_url() ?>style-admin/assets/images/logo/logoKabBengkalis.png"
+        type="image/x-icon" />
     <title>GIS | Desa Bantan Tengah</title>
 
     <!-- ========== All CSS files linkup ========= -->
@@ -14,13 +15,6 @@
     <link rel="stylesheet" href="<?= base_url() ?>style-admin/assets/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="<?= base_url() ?>style-admin/assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="<?= base_url() ?>style-admin/assets/css/main.css" />
-
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/datatables.min.css" />
-
-    <script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/datatables.min.js">
-    </script>
 
     <!-- cdn leaflet js -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -31,7 +25,10 @@
         crossorigin=""></script>
 
     <!-- lefleat draw -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+        integrity="sha512-gc3xjCmIy673V6MyOAZhIW93xhM9ei1I+gLbmFjUHIjocENRsLX/QUE1htk5q1XV2D/iie/VQ8DXI6Vu8bexvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"
+        integrity="sha512-ozq8xQKq6urvuU6jNgkfqAmT7jKN2XumbrX1JiB3TnF7tI48DPI4Gy1GXKD/V3EExgAs1V+pRO7vwtS1LHg0Gw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
