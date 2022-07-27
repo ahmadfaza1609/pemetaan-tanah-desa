@@ -16,7 +16,9 @@
                         <div class="form-group">
                             <div class="input-style-1">
                                 <label>Pemilik Lahan</label>
-                                <input type="text" class="form-control" name="pemilik_lahan" placeholder="Pemilik Lahan" />
+                                <input type="text" class="form-control" name="pemilik_lahan"
+                                    value="<?= set_value('pemilik_lahan') ?>" placeholder="Pemilik Lahan" />
+                                <?= form_error('pemilik_lahan', '<small class="text-danger">', '</small>') ?>
                             </div>
                         </div>
 
@@ -25,7 +27,9 @@
                                 <div class="form-group">
                                     <div class="input-style-1">
                                         <label>Luas Lahan</label>
-                                        <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan">
+                                        <input type="text" class="form-control" name="luas_lahan"
+                                            value="<?= set_value('luas_lahan') ?>" placeholder="Luas Lahan">
+                                        <?= form_error('luas_lahan', '<small class="text-danger">', '</small>') ?>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +39,8 @@
 
                                         <label>Isi Lahan</label>
                                         <div class="select-position">
-                                            <select name="isi_lahan" class="form-control">
+                                            <select value="<?= set_value('isi_lahan') ?>" name="isi_lahan"
+                                                class="form-control">
                                                 <option value="Padi">Padi</option>
                                                 <option value="Jagung">Jagung</option>
                                                 <option value="Sawit">Sawit</option>
@@ -43,6 +48,7 @@
                                                 <option value="Karet">Karet</option>
                                             </select>
                                         </div>
+                                        <?= form_error('isi_lahan', '<small class="text-danger">', '</small>') ?>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +58,9 @@
                             <div class="input-style-1">
 
                                 <label>Nama Lahan</label>
-                                <input type="text" class="form-control" name="nama_lahan" placeholder="Pemilik Lahan">
+                                <input type="text" class="form-control" name="nama_lahan"
+                                    value="<?= set_value('nama_lahan') ?>" placeholder="Nama Lahan">
+                                <?= form_error('nama_lahan', '<small class="text-danger">', '</small>') ?>
                             </div>
                         </div>
 
@@ -60,15 +68,19 @@
                             <div class="input-style-1">
 
                                 <label>Alamat Pemilik Lahan</label>
-                                <input type="text" class="form-control" name="alamat_pemilik" placeholder="Alamat Pemilik Lahan">
+                                <input type="text" class="form-control" name="alamat_pemilik"
+                                    value="<?= set_value('alamat_pemilik') ?>" placeholder="Alamat Pemilik Lahan">
+                                <?= form_error('alamat_pemilik', '<small class="text-danger">', '</small>') ?>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-style-1">
                                 <label>Denah GeoJSON</label>
-                                <textarea class="form-control" name="denah_geojson" rows="3" placeholder="Denah GeoJSON"></textarea>
+                                <textarea class="form-control" name="denah_geojson" rows="3"
+                                    placeholder="Denah GeoJSON"><?= set_value('denah_geojson') ?></textarea>
                             </div>
+                            <?= form_error('denah_geojson', '<small class="text-danger">', '</small>') ?>
                         </div>
 
 
@@ -79,7 +91,8 @@
 
                                         <label>Warna Lahan</label>
                                         <div class="input-group my-colorpicker2">
-                                            <input type="text" name="warna_lahan" class="form-control">
+                                            <input type="text" name="warna_lahan" class="form-control"
+                                                value="<?= set_value('warna_lahan') ?>">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><i class="fas fa-square"></i></span>
                                             </div>
@@ -91,7 +104,8 @@
                                 <div class="form-group">
                                     <div class="input-style-1">
                                         <label>Gambar</label>
-                                        <input type="file" class="form-control" name="gambar">
+                                        <input type="file" class="form-control" name="gambar"
+                                            value="<?= set_value('gambar') ?>">
                                     </div>
                                 </div>
                             </div>
@@ -112,74 +126,74 @@
 </div>
 
 <script type="text/javascript">
-    var peta1 = L.tileLayer(
-        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/streets-v11'
-        });
-
-
-    var peta2 = L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
-        attribution: 'google'
+var peta1 = L.tileLayer(
+    'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11'
     });
 
-    var peta3 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
 
-    var map = L.map('map', {
-        center: [1.528984, 102.209263],
-        zoom: 14,
-        layers: [peta2]
-    });
+var peta2 = L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
+    attribution: 'google'
+});
 
-    var baseLayers = {
-        'OpenStreetMap': peta1,
-        'Satelite': peta2,
-        'Streets': peta3
-    };
+var peta3 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
 
-    var overlays = {
+var map = L.map('map', {
+    center: [1.528984, 102.209263],
+    zoom: 14,
+    layers: [peta2]
+});
 
-    };
+var baseLayers = {
+    'OpenStreetMap': peta1,
+    'Satelite': peta2,
+    'Streets': peta3
+};
 
-    var layerControl = L.control.layers(baseLayers).addTo(map);
+var overlays = {
 
-    // FeatureGroup is to store editable layers
-    var drawnItems = new L.FeatureGroup();
-    map.addLayer(drawnItems);
-    var drawControl = new L.Control.Draw({
+};
 
-        draw: {
-            polygon: true,
-            marker: false,
-            polyline: true,
-            circle: false,
-            circlemarker: false,
-            rectangle: false,
-        },
-        edit: {
-            featureGroup: drawnItems
-        }
-    });
-    map.addControl(drawControl);
+var layerControl = L.control.layers(baseLayers).addTo(map);
 
-    map.on('draw:created', function(event) {
-        var layer = event.layer;
-        var feature = layer.feature = layer.feature || {};
-        feature.type = feature.type || 'Feature';
-        var props = feature.properties = feature.properties || {};
-        drawnItems.addLayer(layer);
-        $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
-    });
+// FeatureGroup is to store editable layers
+var drawnItems = new L.FeatureGroup();
+map.addLayer(drawnItems);
+var drawControl = new L.Control.Draw({
 
-    map.on('draw:edited', function(event) {
-        $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
-    });
+    draw: {
+        polygon: true,
+        marker: false,
+        polyline: true,
+        circle: false,
+        circlemarker: false,
+        rectangle: false,
+    },
+    edit: {
+        featureGroup: drawnItems
+    }
+});
+map.addControl(drawControl);
 
-    map.on('draw:deleted', function(event) {
-        $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
-    });
+map.on('draw:created', function(event) {
+    var layer = event.layer;
+    var feature = layer.feature = layer.feature || {};
+    feature.type = feature.type || 'Feature';
+    var props = feature.properties = feature.properties || {};
+    drawnItems.addLayer(layer);
+    $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
+});
+
+map.on('draw:edited', function(event) {
+    $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
+});
+
+map.on('draw:deleted', function(event) {
+    $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
+});
 </script>

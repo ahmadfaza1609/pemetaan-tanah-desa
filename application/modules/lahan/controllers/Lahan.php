@@ -17,7 +17,6 @@ class Lahan extends MX_Controller
     {
         $data = array(
             'title' => 'Data Lahan',
-            'menu' => 'Pemetaan',
             'lahan' => $this->m_lahan->get_all_data(),
             'isi'   => 'v_data'
         );
@@ -32,13 +31,13 @@ class Lahan extends MX_Controller
         // $this->user_login->protek_halaman();
 
         // form validation
-        $this->form_validation->set_rules('nama_lahan', 'Nama Lahan', 'required', array('required' => '%s harus di isi !!'));
-        $this->form_validation->set_rules('isi_lahan', 'Isi Lahan', 'required', array('required' => '%s harus di isi !!'));
-        $this->form_validation->set_rules('pemilik_lahan', 'Pemilik Lahan', 'required', array('required' => '%s harus di isi !!'));
-        $this->form_validation->set_rules('alamat_pemilik', 'Alamat Pemilik', 'required', array('required' => '%s harus di isi !!'));
-        $this->form_validation->set_rules('denah_geojson', 'Denah GeoJSON', 'required', array('required' => '%s harus di isi !!'));
-        $this->form_validation->set_rules('warna_lahan', 'Warna Lahan', 'required', array('required' => '%s harus di isi !!'));
-        $this->form_validation->set_rules('luas_lahan', 'Luas Lahan', 'required', array('required' => '%s harus di isi !!'));
+        $this->form_validation->set_rules('nama_lahan', 'Nama Lahan', 'required|trim', ['required' => '%s harus di isi !!']);
+        $this->form_validation->set_rules('isi_lahan', 'Isi Lahan', 'required|trim', ['required' => '%s harus di isi !!']);
+        $this->form_validation->set_rules('pemilik_lahan', 'Pemilik Lahan', 'required|trim', ['required' => '%s harus di isi !!']);
+        $this->form_validation->set_rules('alamat_pemilik', 'Alamat Pemilik', 'required|trim', ['required' => '%s harus di isi !!']);
+        $this->form_validation->set_rules('denah_geojson', 'Denah GeoJSON', 'required|trim', ['required' => '%s harus di isi !!']);
+        $this->form_validation->set_rules('warna_lahan', 'Warna Lahan', 'required|trim', ['required' => '%s harus di isi !!']);
+        $this->form_validation->set_rules('luas_lahan', 'Luas Lahan', 'required|trim', ['required' => '%s harus di isi !!']);
 
 
         if ($this->form_validation->run() == TRUE) {

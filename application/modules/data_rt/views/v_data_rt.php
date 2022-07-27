@@ -1,28 +1,14 @@
 <!-- ========== tables-wrapper start ========== -->
-<?php
-// notifikasi form wajib diisi 
-echo validation_errors('<div class="alert alert-danger alert-dismissible">', '</div>');
-
-// notifikasi gagal upload
-if (isset($error_upload)) {
-    echo '<div class="alert alert-warning alert-dismissible">' . $error_upload . '</div>';
-};
-
-// notifikaasi berhasil simpan 
-if ($this->session->flashdata('sukses')) {
-    echo '<div class="alert alert-success alert-dismissible">';
-    echo $this->session->flashdata('sukses');
-    echo '</div>';
-} ?>
+<?= $this->session->flashdata('message') ?>
 <div class="tables-wrapper">
     <div class="row">
         <div class="col-lg-12">
             <div class="card-style mb-30">
-                <h6 class="mb-10">Kelola Data Lahan</h6>
-                <a href="<?= base_url('lahan/add') ?>" class="main-btn primary-btn btn-sm btn-hover"><i
+                <h6 class="mb-10">Kelola Data RT</h6>
+                <a href="<?= base_url('data_rt/add_rt') ?>" class="main-btn primary-btn btn-sm btn-hover"><i
                         class="lni lni-plus me-2"></i>Tambah</a>
                 <p class="text-sm mb-20 mt-4">
-                    Data lahan masyarakat yang terdaftar di desa
+                    Data RT Desa Bantan Tengah yang terdaftar di pemerintahan desa.
                 </p>
                 <div class="table-wrapper table-responsive">
                     <table class="table">
@@ -32,21 +18,18 @@ if ($this->session->flashdata('sukses')) {
                                     <h6>No</h6>
                                 </th>
                                 <th>
-                                    <h6>Nama Lahan</h6>
+                                    <h6>Nama RT</h6>
                                 </th>
                                 <th>
-                                    <h6>Luas Lahan</h6>
+                                    <h6>No RT</h6>
                                 </th>
                                 <th>
-                                    <h6>Isi Lahan</h6>
+                                    <h6>Jenis Kelamin</h6>
                                 </th>
                                 <th>
-                                    <h6>Pemilik Lahan</h6>
+                                    <h6>Alamat</h6>
                                 </th>
-                                <th>
-                                    <h6>Alamat Lahan</h6>
-                                </th>
-                                <th>
+                                <th class="text-center">
                                     <h6>Action</h6>
                                 </th>
                             </tr>
@@ -54,38 +37,31 @@ if ($this->session->flashdata('sukses')) {
                         </thead>
                         <tbody>
                             <?php $no = 1;
-                            foreach ($lahan as $key => $value) { ?>
+                            foreach ($data_rt as $key => $value) { ?>
                             <tr>
                                 <td>
                                     <p><?= $no++ ?></p>
                                 </td>
                                 <td>
-                                    <p><?= $value->nama_lahan ?></p>
+                                    <p><?= $value->nama_rt ?></p>
                                 </td>
                                 <td>
-                                    <p><?= $value->luas_lahan ?></p>
+                                    <p><?= $value->no_rt ?></p>
                                 </td>
                                 <td>
-                                    <p><?= $value->isi_lahan ?></p>
+                                    <p><?= $value->jenis_kelamin ?></p>
                                 </td>
                                 <td>
-                                    <p><?= $value->pemilik_lahan ?></p>
+                                    <p><?= $value->alamat ?></p>
                                 </td>
-                                <td>
-                                    <p><?= $value->alamat_pemilik ?></p>
-                                </td>
-                                <td>
+                                <td class=" text-center">
                                     <p>
-                                        <a href="<?= base_url('dashboard/detail_lahan/' . $value->id_lahan); ?>"
-                                            class="text-success">
-                                            <i class="lni lni-eye"></i>
-                                        </a>
-                                        <a href="<?= base_url('lahan/edit/' . $value->id_lahan); ?>"
+                                        <a href="<?= base_url('data_rt/edit/' . $value->id_data_rt); ?>"
                                             class="text-warning">
                                             <i class="lni lni-pencil-alt ml-2 mr-2"></i>
                                         </a>
-                                        <a href="<?= base_url('lahan/delete/' . $value->id_lahan) ?>"
-                                            onclick="return confirm('Apakah yakin data <?= $value->nama_lahan ?> dihapus ?')"
+                                        <a href="<?= base_url('data_rt/delete/' . $value->id_data_rt) ?>"
+                                            onclick="return confirm('Apakah yakin data <?= $value->nama_rt ?> dihapus ?')"
                                             class="text-danger">
                                             <i class="lni lni-trash-can"></i>
                                         </a>

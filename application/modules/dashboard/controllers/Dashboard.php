@@ -23,10 +23,10 @@ class Dashboard extends MX_Controller
     public function detail_lahan($id_lahan)
     {
         $data = array(
-            'title' => 'Lahan Pertanahan',
+            'title' => 'Detail Lahan Pertanahan',
             'lahan' => $this->m_lahan->detail($id_lahan),
             'foto'  => $this->m_lahan->detail_galeri($id_lahan),
-            'isi'   => 'v_detail_lahan'
+            'isi'   => 'lahan/v_detail_lahan'
         );
 
         $this->load->view('admin/v_admin', $data, FALSE);
