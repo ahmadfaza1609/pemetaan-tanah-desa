@@ -79,7 +79,7 @@
                     <a href="typography.html"> Data Dusun </a>
                 </li>
                 <li>
-                    <a href="cards.html"> Data Jenis Surat </a>
+                    <a href="<?= base_url('jenis_surat/') ?>"> Data Jenis Surat </a>
                 </li>
             </ul>
         </li>
