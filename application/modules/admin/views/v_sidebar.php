@@ -76,7 +76,7 @@
                     <a href="<?= base_url('data_rw/') ?>"> Data RW </a>
                 </li>
                 <li>
-                    <a href="typography.html"> Data Dusun </a>
+                    <a href="<?= base_url('data_dusun/') ?>"> Data Dusun </a>
                 </li>
                 <li>
                     <a href="<?= base_url('jenis_surat/') ?>"> Data Jenis Surat </a>
