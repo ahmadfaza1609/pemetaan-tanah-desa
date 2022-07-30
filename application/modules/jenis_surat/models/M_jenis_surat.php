@@ -29,7 +29,6 @@ class M_jenis_surat extends CI_Model
 
     public function delete($data)
     {
-        $this->db->where('id_jenis_surat', $data['id_jenis_surat']);
         $this->db->delete('tbl_jenis_surat', $data);
     }
 
@@ -37,6 +36,11 @@ class M_jenis_surat extends CI_Model
     {
         $this->db->where('id_jenis_surat', $data['id_jenis_surat']);
         $this->db->update('tbl_jenis_surat', $data);
+    }
+
+    public function pdf($data)
+    {
+        $this->db->insert('tbl_arsip', $data);
     }
 }
 

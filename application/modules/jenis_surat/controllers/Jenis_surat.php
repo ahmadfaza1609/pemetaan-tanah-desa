@@ -22,6 +22,65 @@ class Jenis_surat extends MX_Controller
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
+    // upload arsip
+    public function get_arsip()
+    {
+        $data = array(
+            'title'         => 'Arsip Upload Surat',
+            'error'         => '',
+            'isi'           => 'v_arsip'
+        );
+
+        $this->load->view('admin/v_admin', $data, FALSE);
+    }
+
+    public function upload_arsip()
+    {
+        // form validation arsip
+        $this->form_validation->set_rules('nama', 'Nama lengkap', 'required|trim');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
+        $this->form_validation->set_rules('no_surat', 'No Surat Tanah', 'required|trim');
+        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+
+        if ($this->form_validation->run() == TRUE) {
+            $config['upload_path']          = './uploads_file/';
+            $config['allowed_types']        = 'pdf';
+            $config['max_size']             = 0;
+            $config['encrypt_name']         = TRUE;
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 768;
+
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload('file_arsip')) {
+
+
+                $data = array(
+                    'title'         => 'Arsip Upload Surat',
+                    'error'         => $this->upload->display_errors(),
+                    'isi'           => 'v_arsip'
+                );
+
+                $this->load->view('admin/v_admin', $data, FALSE);
+            } else {
+                $upload_data = $this->upload->data();
+
+                $data = array(
+                    'nama'          => $this->input->post('nama'),
+                    'nik'           => $this->input->post('nik'),
+                    'no_surat'      => $this->input->post('no_surat'),
+                    'alamat'        => $this->input->post('alamat'),
+                    'file_arsip'    => $upload_data['file_name'],
+                );
+                $this->m_jenis_surat->pdf($data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Ditambahkan!</div>');
+                redirect('jenis_surat/get_arsip');
+            }
+        }
+    }
+
+
+    // tambah jenis surat
     public function add_jenis()
     {
         // set form validation

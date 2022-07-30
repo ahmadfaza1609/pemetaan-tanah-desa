@@ -51,7 +51,7 @@ var lahan = L.geoJSON(<?= $value->denah_geojson; ?>, {
 }).addTo(groupLahan);
 lahan.eachLayer(function(layer) {
     layer.bindPopup(
-        "<p><img src='<?= base_url('gambar/' . $value->gambar); ?>' width=200/> </br>" +
+        "<p><img src='<?= base_url('gambar/' . $value->gambar); ?>' width=100/> </br>" +
         "Nama Lahan : <?= $value->nama_lahan; ?></br>" +
         "Isi Lahan : <?= $value->isi_lahan; ?></br>" +
         "Pemilik Lahan : <?= $value->pemilik_lahan; ?></br>" +

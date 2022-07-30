@@ -50,7 +50,7 @@
             </a>
             <ul id="ddmenu_3" class="collapse dropdown-nav">
                 <li>
-                    <a href="#"> Data Arsip </a>
+                    <a href="<?= base_url('jenis_surat/get_arsip') ?>"> Data Arsip </a>
                 </li>
             </ul>
         </li>
