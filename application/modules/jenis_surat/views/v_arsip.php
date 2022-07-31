@@ -1,61 +1,107 @@
-<div class="form-elements-wrapper">
+<!-- ========== tables-wrapper start ========== -->
+<?= $this->session->flashdata('message') ?>
+<div class="tables-wrapper">
     <div class="row">
-        <div class="col-sm-12 ">
-            <!-- input style start -->
+        <div class="col-lg-12">
             <div class="card-style mb-30">
-                <div class="col-sm-6  m-auto justify-content-center">
-                    <h6 class="mb-30 text-center ">Form Tambah Jenis Surat</h6>
-                    <?php echo form_open_multipart('jenis_surat/upload_arsip'); ?>
-                    <div class="input-style-1">
-                        <label>NIK</label>
-                        <input type="text" name="nik" placeholder="NIK" value="<?= set_value('nik') ?>" />
-                    </div>
-                    <div class="input-style-1">
-                        <label>Nama Lengkap</label>
-                        <input type="text" name="nama" placeholder="Nama Lengkap" value="<?= set_value('nama') ?>" />
-                    </div>
-                    <div class="input-style-1">
-                        <label>Nomer Surat</label>
-                        <input type="text" name="no_surat" placeholder="Nomor Surat"
-                            value="<?= set_value('no_surat') ?>" />
-                    </div>
-                    <div class="input-style-1">
-                        <label>Alamat</label>
-                        <input type="text" name="alamat" placeholder="Alamat" value="<?= set_value('alamat') ?>" />
-                    </div>
-                    <div class="input-style-1">
-                        <label>Kecamatan</label>
-                        <input type="text" name="kecamatan" placeholder="Kecamatan"
-                            value="<?= set_value('kecamatan') ?>" />
-                    </div>
-                    <div class="select-style-1">
-                        <label>Jenis Surat</label>
-                        <div class="select-position">
+                <h6 class="mb-10">Kelola Jenis Surat</h6>
+                <a href="<?= base_url('jenis_surat/upload_arsip') ?>" class="main-btn primary-btn btn-sm btn-hover"><i
+                        class="lni lni-plus me-2"></i>Tambah</a>
+                <p class="text-sm mb-20 mt-4">
+                    Jenis Surat Akta Tanah.
+                </p>
+                <div class="table-wrapper table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h6>No</h6>
+                                </th>
+                                <th>
+                                    <h6>NIK</h6>
+                                </th>
+                                <th>
+                                    <h6>Nama Lengkap</h6>
+                                </th>
+                                <th>
+                                    <h6>Alamat</h6>
+                                </th>
+                                <th>
+                                    <h6>Dusun</h6>
+                                </th>
+                                <th>
+                                    <h6>RT/RW</h6>
+                                </th>
+                                <th>
+                                    <h6>Jenis Surat</h6>
+                                </th>
+                                <th>
+                                    <h6>File Surat</h6>
+                                </th>
+                                <th class="text-center">
+                                    <h6>Action</h6>
+                                </th>
+                            </tr>
+                            <!-- end table row-->
+                        </thead>
+                        <tbody>
 
-                            <select name="id_jenis_surat" aria-label="Default select example">
-                                <option value="" hidden>--Pilih Jenis Surat--</option>
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-style-1">
-                        <label>Jenis Surat</label>
-                        <input type="file" name="file_arsip" />
-                    </div>
+                            <?php $no = 1;
+                            foreach ($arsip_surat as $key => $value) { ?>
+                            <tr>
+                                <td>
+                                    <p><?= $no++ ?></p>
+                                </td>
+                                <td>
+                                    <p><?= $value->nik ?></p>
+                                </td>
+                                <td>
+                                    <p><?= $value->nama ?></p>
+                                </td>
+                                <td>
+                                    <p><?= $value->alamat ?></p>
+                                </td>
+                                <td>
+                                    <p><?= $value->no_dusun ?></p>
+                                </td>
+                                <td>
+                                    <p><?= $value->no_rw ?>/<?= $value->no_rt ?></p>
+                                </td>
+                                <td>
+                                    <p><?= $value->nama_surat ?></p>
+                                </td>
+                                <td>
+                                    <p><?= $value->file_arsip ?></p>
+                                </td>
 
-                    <div class="col-12">
-                        <div class="button-group d-flex justify-content-center flex-wrap">
-                            <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">
-                                Simpan
-                            </button>
-                        </div>
-                    </div>
-                    <?php echo form_close(); ?>
+                                <td class=" text-center">
+                                    <p>
+                                        <a href="<?= base_url('jenis_surat/detail_arsip/' . $value->id_arsip); ?>"
+                                            class="text-success">
+                                            <i class="lni lni-eye"></i>
+                                        </a>
+                                        <a href="<?= base_url('jenis_surat/edit_arsip/' . $value->id_arsip); ?>"
+                                            class="text-warning">
+                                            <i class="lni lni-pencil-alt ml-2 mr-2"></i>
+                                        </a>
+                                        <a href="<?= base_url('jenis_surat/del_arsip/' . $value->id_arsip) ?>"
+                                            onclick="return confirm('Apakah yakin data <?= $value->nik ?> dihapus ?')"
+                                            class="text-danger">
+                                            <i class="lni lni-trash-can"></i>
+                                        </a>
+                                    </p>
+                                </td>
 
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <!-- end table -->
                 </div>
-                <!-- end input -->
             </div>
             <!-- end card -->
         </div>
+        <!-- end col -->
     </div>
+    <!-- end row -->
 </div>

@@ -10,7 +10,7 @@
                 <p class="text-sm mb-20 mt-4">
                     Jenis Surat Akta Tanah.
                 </p>
-                <div class="table-wrapper table-responsive">
+                <div class="table-wrapper table-responsive border-1">
                     <table class="table">
                         <thead>
                             <tr>

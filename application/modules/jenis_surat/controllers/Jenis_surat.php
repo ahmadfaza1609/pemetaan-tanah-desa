@@ -23,11 +23,12 @@ class Jenis_surat extends MX_Controller
     }
 
     // upload arsip
+
     public function get_arsip()
     {
         $data = array(
             'title'         => 'Arsip Upload Surat',
-            'error'         => '',
+            'arsip_surat'   => $this->m_jenis_surat->get_arsip(),
             'isi'           => 'v_arsip'
         );
 
@@ -58,7 +59,11 @@ class Jenis_surat extends MX_Controller
                 $data = array(
                     'title'         => 'Arsip Upload Surat',
                     'error'         => $this->upload->display_errors(),
-                    'isi'           => 'v_arsip'
+                    'jenis_surat'   => $this->m_jenis_surat->getJenisSurat(),
+                    'data_rt'       => $this->m_jenis_surat->get_data_rt(),
+                    'data_rw'       => $this->m_jenis_surat->get_data_rw(),
+                    'data_dusun'    => $this->m_jenis_surat->get_data_dusun(),
+                    'isi'           => 'v_tambah_arsip'
                 );
 
                 $this->load->view('admin/v_admin', $data, FALSE);
@@ -70,6 +75,10 @@ class Jenis_surat extends MX_Controller
                     'nik'           => $this->input->post('nik'),
                     'no_surat'      => $this->input->post('no_surat'),
                     'alamat'        => $this->input->post('alamat'),
+                    'id_jenis_surat' => $this->input->post('id_jenis_surat'),
+                    'id_rt'         => $this->input->post('id_rt'),
+                    'id_rw'         => $this->input->post('id_rw'),
+                    'id_dusun'      => $this->input->post('id_dusun'),
                     'file_arsip'    => $upload_data['file_name'],
                 );
                 $this->m_jenis_surat->pdf($data);
@@ -77,7 +86,122 @@ class Jenis_surat extends MX_Controller
                 redirect('jenis_surat/get_arsip');
             }
         }
+        $data = array(
+            'title'         => 'Kelola Tambah Surat',
+            'error'         => $this->upload->display_errors(),
+            'jenis_surat'   => $this->m_jenis_surat->getJenisSurat(),
+            'data_rt'       => $this->m_jenis_surat->get_data_rt(),
+            'data_rw'       => $this->m_jenis_surat->get_data_rw(),
+            'data_dusun'    => $this->m_jenis_surat->get_data_dusun(),
+            'isi'           => 'v_tambah_arsip'
+        );
+
+        $this->load->view('admin/v_admin', $data, FALSE);
     }
+
+    public function del_arsip($id_arsip = null)
+    {
+        $data = array(
+            'id_arsip' => $id_arsip
+        );
+        $this->m_jenis_surat->delete_arsip($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Dihapus!</div>');
+        redirect('jenis_surat/get_arsip/');
+    }
+
+    public function detail_arsip($id_arsip = null)
+    {
+        $data = array(
+            'title' => 'Detail Surat Tanah',
+            'arsip' => $this->m_jenis_surat->get_detail_arsip($id_arsip),
+            'isi'   => 'v_detail_arsip'
+        );
+        $this->load->view('admin/v_admin', $data, FALSE);
+    }
+
+    public function edit_arsip($id_arsip = null)
+    {
+        // form validation arsip
+        $this->form_validation->set_rules('nama', 'Nama lengkap', 'required|trim');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
+        $this->form_validation->set_rules('no_surat', 'No Surat Tanah', 'required|trim');
+        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+
+        if ($this->form_validation->run() == TRUE) {
+            $config['upload_path']          = './uploads_file/';
+            $config['allowed_types']        = 'pdf';
+            $config['max_size']             = 0;
+            $config['encrypt_name']         = TRUE;
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 768;
+
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload('file_arsip')) {
+
+
+                $data = array(
+                    'title'         => 'Arsip Edit Surat',
+                    'error'         => $this->upload->display_errors(),
+                    'arsip_surat'   => $this->m_jenis_surat->get_detail_arsip($id_arsip),
+                    'jenis_surat'   => $this->m_jenis_surat->getJenisSurat($id_arsip),
+                    'data_rt'       => $this->m_jenis_surat->get_data_rt($id_arsip),
+                    'data_rw'       => $this->m_jenis_surat->get_data_rw($id_arsip),
+                    'data_dusun'    => $this->m_jenis_surat->get_data_dusun($id_arsip),
+                    'isi'           => 'v_edit_arsip'
+                );
+
+                $this->load->view('admin/v_admin', $data, FALSE);
+            } else {
+                $upload_data = $this->upload->data();
+
+                $data = array(
+                    'id_arsip'      => $id_arsip,
+                    'nama'          => $this->input->post('nama'),
+                    'nik'           => $this->input->post('nik'),
+                    'no_surat'      => $this->input->post('no_surat'),
+                    'alamat'        => $this->input->post('alamat'),
+                    'id_jenis_surat' => $this->input->post('id_jenis_surat'),
+                    'id_rt'         => $this->input->post('id_rt'),
+                    'id_rw'         => $this->input->post('id_rw'),
+                    'id_dusun'      => $this->input->post('id_dusun'),
+                    'file_arsip'    => $upload_data['file_name'],
+                );
+                $this->m_jenis_surat->arsip_edit($data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Edit!</div>');
+                redirect('jenis_surat/get_arsip/' . $id_arsip);
+            }
+            $data = array(
+                'id_arsip'      => $this->session->userdata('id_arsip'),
+                'nama'          => $this->input->post('nama'),
+                'nik'           => $this->input->post('nik'),
+                'no_surat'      => $this->input->post('no_surat'),
+                'alamat'        => $this->input->post('alamat'),
+                'id_jenis_surat' => $this->input->post('id_jenis_surat'),
+                'id_rt'         => $this->input->post('id_rt'),
+                'id_rw'         => $this->input->post('id_rw'),
+                'id_dusun'      => $this->input->post('id_dusun'),
+            );
+            $this->m_jenis_surat->arsip_edit($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Edit!</div>');
+            redirect('jenis_surat/get_arsip/' . $id_arsip);
+        }
+        $data = array(
+            'title'         => 'Kelola Edit Surat',
+            'error'         => $this->upload->display_errors(),
+            'arsip_surat'   => $this->m_jenis_surat->get_detail_arsip($id_arsip),
+            'jenis_surat'   => $this->m_jenis_surat->getJenisSurat($id_arsip),
+            'data_rt'       => $this->m_jenis_surat->get_data_rt($id_arsip),
+            'data_rw'       => $this->m_jenis_surat->get_data_rw($id_arsip),
+            'data_dusun'    => $this->m_jenis_surat->get_data_dusun($id_arsip),
+            'isi'           => 'v_edit_arsip'
+        );
+
+        $this->load->view('admin/v_admin', $data, FALSE);
+    }
+
+
+
 
 
     // tambah jenis surat
@@ -107,7 +231,7 @@ class Jenis_surat extends MX_Controller
         }
     }
 
-    public function delete($id_jenis_surat)
+    public function delete($id_jenis_surat = null)
     {
         $data = array(
             'id_jenis_surat' => $id_jenis_surat
@@ -117,7 +241,7 @@ class Jenis_surat extends MX_Controller
         redirect('jenis_surat/');
     }
 
-    public function edit($id_jenis_surat)
+    public function edit($id_jenis_surat = null)
     {
         // set form validation
         $this->form_validation->set_rules('nama_surat', 'Jenis Surat', 'required|trim');

@@ -7,6 +7,8 @@
                 <h6 class="mb-10">Kelola Data RW</h6>
                 <a href="<?= base_url('data_rw/add_rw') ?>" class="main-btn primary-btn btn-sm btn-hover"><i
                         class="lni lni-plus me-2"></i>Tambah</a>
+                <a href="<?= base_url() ?>" class="main-btn success-btn btn-sm btn-hover"><i
+                        class="lni lni-add-files me-2 fs-5"></i>Import</a>
                 <p class="text-sm mb-20 mt-4">
                     Data RW Desa Bantan Tengah yang terdaftar di pemerintahan desa.
                 </p>
