@@ -5,7 +5,11 @@
             <div class="card-style mb-30">
                 <div class="col-sm-6  m-auto justify-content-center">
                     <h6 class="mb-30 text-center ">Form Tambah Jenis Surat</h6>
-                    <?php echo form_open_multipart('jenis_surat/upload_arsip'); ?>
+                    <?php
+                    // notifikasi form wajib diisi 
+                    echo validation_errors('<div class="alert alert-danger alert-dismissible">', '</div>');
+
+                    echo form_open_multipart('jenis_surat/upload_arsip'); ?>
                     <div class="input-style-1">
                         <label>NIK</label>
                         <input type="text" name="nik" placeholder="NIK" value="<?= set_value('nik') ?>" />

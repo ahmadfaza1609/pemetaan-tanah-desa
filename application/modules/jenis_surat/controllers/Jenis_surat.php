@@ -27,7 +27,7 @@ class Jenis_surat extends MX_Controller
     public function get_arsip()
     {
         $data = array(
-            'title'         => 'Arsip Upload Surat',
+            'title'         => 'Arsip Upload Arsip',
             'arsip_surat'   => $this->m_jenis_surat->get_arsip(),
             'isi'           => 'v_arsip'
         );
@@ -41,7 +41,7 @@ class Jenis_surat extends MX_Controller
         $this->form_validation->set_rules('nama', 'Nama lengkap', 'required|trim');
         $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
         $this->form_validation->set_rules('no_surat', 'No Surat Tanah', 'required|trim');
-        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 
         if ($this->form_validation->run() == TRUE) {
             $config['upload_path']          = './uploads_file/';
@@ -57,7 +57,7 @@ class Jenis_surat extends MX_Controller
 
 
                 $data = array(
-                    'title'         => 'Arsip Upload Surat',
+                    'title'         => 'Arsip Upload Arsip',
                     'error'         => $this->upload->display_errors(),
                     'jenis_surat'   => $this->m_jenis_surat->getJenisSurat(),
                     'data_rt'       => $this->m_jenis_surat->get_data_rt(),
@@ -87,7 +87,7 @@ class Jenis_surat extends MX_Controller
             }
         }
         $data = array(
-            'title'         => 'Kelola Tambah Surat',
+            'title'         => 'Kelola Tambah Arsip',
             'error'         => $this->upload->display_errors(),
             'jenis_surat'   => $this->m_jenis_surat->getJenisSurat(),
             'data_rt'       => $this->m_jenis_surat->get_data_rt(),
@@ -125,7 +125,7 @@ class Jenis_surat extends MX_Controller
         $this->form_validation->set_rules('nama', 'Nama lengkap', 'required|trim');
         $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
         $this->form_validation->set_rules('no_surat', 'No Surat Tanah', 'required|trim');
-        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 
         if ($this->form_validation->run() == TRUE) {
             $config['upload_path']          = './uploads_file/';
@@ -141,7 +141,7 @@ class Jenis_surat extends MX_Controller
 
 
                 $data = array(
-                    'title'         => 'Arsip Edit Surat',
+                    'title'         => 'Arsip Edit Arsio',
                     'error'         => $this->upload->display_errors(),
                     'arsip_surat'   => $this->m_jenis_surat->get_detail_arsip($id_arsip),
                     'jenis_surat'   => $this->m_jenis_surat->getJenisSurat($id_arsip),
@@ -169,10 +169,10 @@ class Jenis_surat extends MX_Controller
                 );
                 $this->m_jenis_surat->arsip_edit($data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Edit!</div>');
-                redirect('jenis_surat/get_arsip/' . $id_arsip);
+                redirect('jenis_surat/get_arsip');
             }
             $data = array(
-                'id_arsip'      => $this->session->userdata('id_arsip'),
+                'id_arsip'      => $id_arsip,
                 'nama'          => $this->input->post('nama'),
                 'nik'           => $this->input->post('nik'),
                 'no_surat'      => $this->input->post('no_surat'),
@@ -184,10 +184,10 @@ class Jenis_surat extends MX_Controller
             );
             $this->m_jenis_surat->arsip_edit($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Edit!</div>');
-            redirect('jenis_surat/get_arsip/' . $id_arsip);
+            redirect('jenis_surat/get_arsip');
         }
         $data = array(
-            'title'         => 'Kelola Edit Surat',
+            'title'         => 'Kelola Edit Arsip',
             'error'         => $this->upload->display_errors(),
             'arsip_surat'   => $this->m_jenis_surat->get_detail_arsip($id_arsip),
             'jenis_surat'   => $this->m_jenis_surat->getJenisSurat($id_arsip),

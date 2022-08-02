@@ -73,6 +73,7 @@ class M_jenis_surat extends CI_Model
             tbl_arsip.nama, 
             tbl_arsip.nik, 
             tbl_arsip.alamat, 
+            tbl_arsip.no_surat, 
             tbl_arsip.id_jenis_surat, 
             tbl_arsip.id_rt, 
             tbl_arsip.id_rw, 
@@ -120,13 +121,7 @@ class M_jenis_surat extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tbl_arsip');
-        $this->db->join('tbl_jenis_surat', 'tbl_jenis_surat.id_jenis_surat = tbl_arsip.id_jenis_surat');
-        $this->db->join('tbl_data_dusun', 'tbl_data_dusun.id_data_dusun = tbl_arsip.id_dusun');
-        $this->db->join('tbl_data_rt', 'tbl_data_rt.id_data_rt=tbl_arsip.id_rt');
-        $this->db->join('tbl_data_rw', 'tbl_data_rw.id_data_rw = tbl_arsip.id_rw');
         $this->db->where('id_arsip', $data['id_arsip']);
-        $this->db->where('id_data_rt', $data['id_data_rt']);
-        $this->db->where('id_data_rw', $data['id_data_rw']);
         $this->db->update('tbl_arsip', $data);
     }
 }

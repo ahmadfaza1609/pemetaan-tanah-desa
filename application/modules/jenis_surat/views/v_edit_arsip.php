@@ -4,8 +4,12 @@
             <!-- input style start -->
             <div class="card-style mb-30">
                 <div class="col-sm-6  m-auto justify-content-center">
-                    <h6 class="mb-30 text-center ">Form Tambah Jenis Surat</h6>
-                    <?php echo form_open_multipart('jenis_surat/edit_arsip/' . $arsip_surat->id_arsip); ?>
+                    <h6 class="mb-30 text-center ">Form Edit Arsip</h6>
+                    <?php
+                    echo validation_errors('<div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="icon fas fa-ban"></i>', '</div>');
+                    echo form_open_multipart('jenis_surat/edit_arsip/' . $arsip_surat->id_arsip); ?>
                     <div class="input-style-1">
                         <label>NIK</label>
                         <input type="text" name="nik" placeholder="NIK" value="<?= $arsip_surat->nik ?>" />
@@ -20,7 +24,8 @@
                             <select name="id_jenis_surat" aria-label="Default select example">
                                 <option value="id_jenis_surat" hidden>--Pilih Jenis Surat--</option>
                                 <?php foreach ($jenis_surat as $key => $value) { ?>
-                                <option value="<?= $value->id_jenis_surat ?>">
+                                <option value="<?= $value->id_jenis_surat ?>"
+                                    <?= $arsip_surat->id_jenis_surat == $value->id_jenis_surat ? 'selected' : '' ?>>
                                     <?= $value->nama_surat ?></option>
                                 <?php } ?>
                             </select>
@@ -41,9 +46,10 @@
                                 <label>Dusun</label>
                                 <div class="select-position">
                                     <select name="id_dusun" aria-label="Default select example">
-                                        <option value="id_dusun" hidden>--Pilih Jenis Surat--</option>
+                                        <option value="id_dusun" hidden>--Pilih Dusun--</option>
                                         <?php foreach ($data_dusun as $key => $value) { ?>
-                                        <option value="<?= $value->id_data_dusun ?>">
+                                        <option value="<?= $value->id_data_dusun ?>"
+                                            <?= $arsip_surat->id_dusun == $value->id_data_dusun ? 'selected' : '' ?>>
                                             <?= $value->no_dusun ?> | <?= $value->nama_dusun ?></option>
                                         <?php } ?>
                                     </select>
@@ -57,7 +63,8 @@
                                     <select name="id_rw" aria-label="Default select example">
                                         <option value="id_rw" hidden>--Pilih RW--</option>
                                         <?php foreach ($data_rw as $key => $value) { ?>
-                                        <option value="<?= $value->id_data_rw ?>">
+                                        <option value="<?= $value->id_data_rw ?>"
+                                            <?= $arsip_surat->id_rw == $value->id_data_rw ? 'selected' : '' ?>>
                                             <?= $value->no_rw ?> | <?= $value->nama_rw ?></option>
                                         <?php } ?>
                                     </select>
@@ -71,7 +78,8 @@
                                     <select name="id_rt" aria-label="Default select example">
                                         <option value="id_data_rt" hidden>--Pilih RT--</option>
                                         <?php foreach ($data_rt as $key => $value) { ?>
-                                        <option value="<?= $value->id_data_rt ?>">
+                                        <option value="<?= $value->id_data_rt ?>"
+                                            <?= $arsip_surat->id_rt == $value->id_data_rt ? 'selected' : '' ?>>
                                             <?= $value->no_rt ?> | <?= $value->nama_rt ?></option>
                                         <?php } ?>
                                     </select>
