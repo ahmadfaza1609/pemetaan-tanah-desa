@@ -33,8 +33,12 @@
                     <a href="<?= base_url('lahan/index') ?>"> Data Tanah </a>
                 </li>
                 <li>
-                    <a href="blank-page.html"> Galeri </a>
+                    <a href="<?= base_url('lahan/galeri') ?>"> Galeri Foto</a>
                 </li>
+                <li>
+                    <a href="<?= base_url('lahan/galeri_lahan') ?>"> Galeri Tanah</a>
+                </li>
+
             </ul>
         </li>
         <li class="nav-item nav-item-has-children">
@@ -84,7 +88,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="tables.html">
+            <a href="<?= base_url('user/') ?>">
                 <span class="icon">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -98,7 +102,7 @@
             <hr />
         </span>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="notification.html">
                 <span class="icon">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +112,7 @@
                 </span>
                 <span class="text">Notifications</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 </nav>
 <!-- ======== sidebar-nav end =========== -->

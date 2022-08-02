@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="<?= base_url() ?>style-admin/assets/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="<?= base_url() ?>style-admin/assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="<?= base_url() ?>style-admin/assets/css/main.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>style/background/background.css">
+    <!-- Ekko Lightbox -->
+    <link rel="stylesheet" href="<?= base_url() ?>style/plugins/ekko-lightbox/ekko-lightbox.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url() ?>style/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?= base_url() ?>style/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet"
+        href="<?= base_url() ?>style/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+
 
     <!-- cdn leaflet js -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
