@@ -225,7 +225,7 @@ class Lahan extends MX_Controller
                 );
                 $this->m_lahan->add_foto($data);
                 $this->session->set_flashdata('sukses', 'Foto berhasil ditambahkan !!');
-                redirect('add_foto/' . $id_lahan);
+                redirect('lahan/add_foto/' . $id_lahan);
             }
         }
 
@@ -250,7 +250,7 @@ class Lahan extends MX_Controller
         );
         $this->m_lahan->delete_foto($data);
         $this->session->set_flashdata('sukses', 'Data Berhasil dihapus !!');
-        redirect('add_foto/' . $id_lahan);
+        redirect('lahan/add_foto/' . $id_lahan);
     }
 
 
