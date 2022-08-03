@@ -54,8 +54,6 @@ class Jenis_surat extends MX_Controller
             $this->upload->initialize($config);
 
             if (!$this->upload->do_upload('file_arsip')) {
-
-
                 $data = array(
                     'title'         => 'Arsip Upload Arsip',
                     'error'         => $this->upload->display_errors(),
@@ -65,7 +63,6 @@ class Jenis_surat extends MX_Controller
                     'data_dusun'    => $this->m_jenis_surat->get_data_dusun(),
                     'isi'           => 'v_tambah_arsip'
                 );
-
                 $this->load->view('admin/v_admin', $data, FALSE);
             } else {
                 $upload_data = $this->upload->data();
@@ -132,14 +129,10 @@ class Jenis_surat extends MX_Controller
             $config['allowed_types']        = 'pdf';
             $config['max_size']             = 0;
             $config['encrypt_name']         = TRUE;
-            // $config['max_width']            = 1024;
-            // $config['max_height']           = 768;
 
             $this->upload->initialize($config);
 
             if (!$this->upload->do_upload('file_arsip')) {
-
-
                 $data = array(
                     'title'         => 'Arsip Edit Arsio',
                     'error'         => $this->upload->display_errors(),
@@ -150,11 +143,9 @@ class Jenis_surat extends MX_Controller
                     'data_dusun'    => $this->m_jenis_surat->get_data_dusun($id_arsip),
                     'isi'           => 'v_edit_arsip'
                 );
-
                 $this->load->view('admin/v_admin', $data, FALSE);
             } else {
                 $upload_data = $this->upload->data();
-
                 $data = array(
                     'id_arsip'      => $id_arsip,
                     'nama'          => $this->input->post('nama'),
