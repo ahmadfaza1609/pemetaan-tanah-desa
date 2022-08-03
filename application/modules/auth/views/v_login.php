@@ -1,4 +1,4 @@
-<section class="signin-section">
+<section class="signin-section shadow-sm">
     <div class="container m-auto ">
         <div class="row d-flex m-auto align-items-center justify-content-center">
             <div class="col-lg-6 mt-3">
@@ -29,20 +29,6 @@
                                     <?= form_error('password', '<small class="text-danger">', '</small>') ?>
                                 </div>
                             </div>
-                            <!-- end col -->
-                            <!-- <div class="col-xxl-6 col-lg-12 col-md-6">
-                                <div class="form-check checkbox-style mb-30">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkbox-remember" />
-                                    <label class="form-check-label" for="checkbox-remember">
-                                        Ingatkan saya</label>
-                                </div>
-                            </div> -->
-                            <!-- end col -->
-                            <!-- <div class="col-xxl-6 col-lg-12 col-md-6">
-                                <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
-                                    <a href="#" class="hover-underline">Ajukan Lupa Password?</a>
-                                </div>
-                            </div> -->
                             <!-- end col -->
                             <div class="col-12">
                                 <div class="button-group d-flex justify-content-center flex-wrap">

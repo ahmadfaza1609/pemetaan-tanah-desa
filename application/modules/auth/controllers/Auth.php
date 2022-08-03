@@ -22,9 +22,10 @@ class Auth extends MX_Controller
         ]);
         if ($this->form_validation->run() == FALSE) {
 
-            $this->load->view('auth/v_head');
-            $this->load->view('auth/v_login');
-            $this->load->view('auth/v_script');
+            $data = array(
+                'auth'   => 'v_login'
+            );
+            $this->load->view('auth/v_auth_user', $data, FALSE);
         } else {
             $this->_login();
         }
@@ -87,9 +88,11 @@ class Auth extends MX_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('auth/v_head');
-            $this->load->view('auth/v_register');
-            $this->load->view('auth/v_script');
+
+            $data = array(
+                'auth'   => 'v_register'
+            );
+            $this->load->view('auth/v_auth_user', $data, FALSE);
         } else {
             $data = [
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
