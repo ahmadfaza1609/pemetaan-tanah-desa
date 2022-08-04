@@ -24,6 +24,7 @@ class Lahan extends MX_Controller
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
+
     // Add a new item
     public function add()
     {
@@ -165,8 +166,6 @@ class Lahan extends MX_Controller
     //Delete one item
     public function delete($id_lahan)
     {
-        // $this->user_login->protek_halaman();
-
         $data = array('id_lahan' => $id_lahan);
         $this->m_lahan->delete($data);
         $this->session->set_flashdata('sukses', 'Data Berhasil dihapus !!');
