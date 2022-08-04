@@ -8,6 +8,8 @@ class Admin extends MX_Controller
     {
         parent::__construct();
         $this->load->model('m_admin');
+        $this->load->model('auth/m_auth');
+        // if(!$this->m_auth->)
     }
 
     public function index()

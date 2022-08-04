@@ -30,6 +30,12 @@
             </a>
             <ul id="ddmenu_2" class="collapse dropdown-nav">
                 <li>
+                    <a href="<?= base_url('lahan/LahanTanah/') ?>"> Pertanahan Desa </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('lahan/LahanJumlah/') ?>"> Data Kumpulan Tanah </a>
+                </li>
+                <li>
                     <a href="<?= base_url('lahan/index') ?>"> Data Tanah </a>
                 </li>
                 <li>
@@ -55,6 +61,9 @@
             <ul id="ddmenu_3" class="collapse dropdown-nav">
                 <li>
                     <a href="<?= base_url('jenis_surat/get_arsip') ?>"> Data Arsip </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('pengarsipan/') ?>"> Pengarsipan </a>
                 </li>
             </ul>
         </li>
@@ -85,6 +94,9 @@
                 <li>
                     <a href="<?= base_url('jenis_surat/') ?>"> Data Jenis Surat </a>
                 </li>
+                <li>
+                    <a href="<?= base_url('penduduk/') ?>"> Data Penduduk </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">
@@ -103,4 +115,3 @@
         </span>
     </ul>
 </nav>
-<!-- ======== sidebar-nav end =========== -->
