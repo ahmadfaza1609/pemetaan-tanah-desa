@@ -52,9 +52,12 @@ class Auth extends MX_Controller
                         'role_id' => $user['role_id']
 
                     ];
-
                     $this->session->set_userdata($data);
-                    redirect('dashboard');
+                    if ($user['role_id'] == 1) {
+                        redirect('dashboard');
+                    } else {
+                        redirect('pemetaan_user/Pemetaan_user');
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
                     redirect('auth');
