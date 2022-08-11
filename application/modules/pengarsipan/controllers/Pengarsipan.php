@@ -8,6 +8,7 @@ class Pengarsipan extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('m_pengarsipan');
         $this->load->model('penduduk/m_penduduk');
@@ -21,6 +22,7 @@ class Pengarsipan extends MX_Controller
             'pengarsipan' => $this->m_pengarsipan->getPengarsipan(),
             'isi' => 'v_pengarsipan'
         );
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -48,6 +50,7 @@ class Pengarsipan extends MX_Controller
                     'penduduk'      => $this->m_penduduk->getPenduduk($id_pengarsipan),
                     'isi'           => 'pengarsipan/v_ubahPengarsipan'
                 );
+                $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('admin/v_admin', $data, FALSE);
             } else {
                 $upload_data = $this->upload->data();
@@ -81,7 +84,7 @@ class Pengarsipan extends MX_Controller
             'penduduk'      => $this->m_penduduk->getPenduduk($id_pengarsipan),
             'isi'           => 'pengarsipan/v_ubahPengarsipan'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -114,7 +117,6 @@ class Pengarsipan extends MX_Controller
                 $upload_data = $this->upload->data();
 
                 $data = array(
-                    'id_lahan_warga'    => $this->input->post('id_lahan_warga'),
                     'id_penduduk'       => $this->input->post('id_penduduk'),
                     'id_jenis_surat'    => $this->input->post('id_jenis_surat'),
                     'ket'               => $this->input->post('ket'),
@@ -132,7 +134,7 @@ class Pengarsipan extends MX_Controller
             'penduduk'      => $this->m_penduduk->getPenduduk(),
             'isi'           => 'pengarsipan/v_tambahPengarsipan'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -156,6 +158,7 @@ class Pengarsipan extends MX_Controller
             'arsip' => $this->m_pengarsipan->getDetailPengarsipan($id_pengarsipan),
             'isi'   => 'pengarsipan/v_detailPengarsipan'
         );
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 }

@@ -56,7 +56,7 @@ class Auth extends MX_Controller
                     if ($user['role_id'] == 1) {
                         redirect('dashboard');
                     } else {
-                        redirect('pemetaan_user/Pemetaan_user');
+                        // redirect('pemetaan_user');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
@@ -73,47 +73,47 @@ class Auth extends MX_Controller
     }
 
 
-    public function register()
-    {
-        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim|min_length[1]', [
-            'required' => '%s wajib di isi !!!'
-        ]);
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_user_regis.email]', [
-            'required' => 'Email wajib di isi !!!',
-            'valid_email' => 'Email tidak valid masukkan email yang benar ',
-            'is_unique' => 'Email sudah terdaftar',
-        ]);
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
-            'matches' => 'Password tidak sama',
-        ]);
-        $this->form_validation->set_rules('password2', 'Password2', 'required|trim|matches[password1]', [
-            'matches' => 'Password tidak sama'
-        ]);
+    // public function register()
+    // {
+    //     $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim|min_length[1]', [
+    //         'required' => '%s wajib di isi !!!'
+    //     ]);
+    //     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_user_regis.email]', [
+    //         'required' => 'Email wajib di isi !!!',
+    //         'valid_email' => 'Email tidak valid masukkan email yang benar ',
+    //         'is_unique' => 'Email sudah terdaftar',
+    //     ]);
+    //     $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
+    //         'matches' => 'Password tidak sama',
+    //     ]);
+    //     $this->form_validation->set_rules('password2', 'Password2', 'required|trim|matches[password1]', [
+    //         'matches' => 'Password tidak sama'
+    //     ]);
 
-        if ($this->form_validation->run() == false) {
+    //     if ($this->form_validation->run() == false) {
 
-            $data = array(
-                'auth'   => 'v_register'
-            );
-            $this->load->view('auth/v_auth_user', $data, FALSE);
-        } else {
-            $data = [
-                'nama' => htmlspecialchars($this->input->post('nama', true)),
-                'email' => htmlspecialchars(
-                    $this->input->post('email', true)
-                ),
-                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'foto' => 'default.jpg',
-                'role_id' => 2,
-                'user_aktif' => 1,
-                'date_created' => time(),
-            ];
+    //         $data = array(
+    //             'auth'   => 'v_register'
+    //         );
+    //         $this->load->view('auth/v_auth_user', $data, FALSE);
+    //     } else {
+    //         $data = [
+    //             'nama' => htmlspecialchars($this->input->post('nama', true)),
+    //             'email' => htmlspecialchars(
+    //                 $this->input->post('email', true)
+    //             ),
+    //             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+    //             'foto' => 'default.jpg',
+    //             'role_id' => 2,
+    //             'user_aktif' => 1,
+    //             'date_created' => time(),
+    //         ];
 
-            $this->m_auth->add_register($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda Berhasil Mendaftar!</div>');
-            redirect('auth');
-        }
-    }
+    //         $this->m_auth->add_register($data);
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda Berhasil Mendaftar!</div>');
+    //         redirect('auth');
+    //     }
+    // }
 
 
     public function logout()
@@ -123,6 +123,12 @@ class Auth extends MX_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil logout!</div>');
         redirect('auth');
+    }
+
+    public function blocked()
+    {
+        $data['title'] = 'Akses Di Block';
+        $this->load->view('v_blocked', $data);
     }
 }
 

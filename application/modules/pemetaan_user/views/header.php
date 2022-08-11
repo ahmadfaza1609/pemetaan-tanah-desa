@@ -1,8 +1,9 @@
 <!-- Navbar -->
-<header class="p-3 border-bottom sticky-top bg-white shadow-sm">
+<header class="p-3 border-bottom sticky-top bg-white shadow-sm right-0">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <a href="<?= base_url('pemetaan_user/') ?>"
+                class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                 <img src="<?= base_url() ?>style-admin/assets/images/logo/logoKabBengkalis.png" class="bi me-3"
                     height="80" role="img" aria-label="Bootstrap">
 
@@ -26,7 +27,7 @@
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    <span><small>Ahmad Faza Hazmi</small></span>
+                    <span><small><?= $user['nama'] ?></small></span>
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                     <li><a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Logout</a></li>

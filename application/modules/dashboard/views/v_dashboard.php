@@ -1,5 +1,52 @@
+<div class="row">
+    <div class="col-xl-3 col-lg-4 col-sm-6">
+        <div class="icon-card mb-30">
+            <div class="icon purple">
+                <i class="lni lni-layers"></i>
+            </div>
+            <div class="content">
+                <h6 class="mb-10">Jumlah Arsip</h6>
+                <h3 class="text-bold"><?= $jumlah_surat ?> Arsip</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-sm-6">
+        <div class="icon-card mb-30">
+            <div class="icon success">
+                <i class="lni lni-users"></i>
+            </div>
+            <div class="content">
+                <h6 class="mb-10">Jumlah Penduduk</h6>
+                <h3 class="text-bold"><?= $jumlah_penduduk ?> Penduduk</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-sm-6">
+        <div class="icon-card mb-30">
+            <div class="icon primary">
+                <i class="lni lni-map"></i>
+            </div>
+            <div class="content">
+                <h6 class="mb-10">Jumlah Lahan</h6>
+                <h3 class="text-bold"><?= $jumlah_lahan ?> Lahan</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-sm-6">
+        <div class="icon-card mb-30">
+            <div class="icon orange">
+                <i class="lni lni-user"></i>
+            </div>
+            <div class="content">
+                <h6 class="mb-10">User</h6>
+                <h3 class="text-bold"><?= $jumlah_user ?> User</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="content">
-    <div id="map" style="width: 100%; height: 600px;"></div>
+    <div id="map" style="width: 100%; height: 600px;" class="rounded-3"></div>
 </div>
 
 <script>
@@ -23,7 +70,7 @@ var peta3 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var map = L.map('map', {
     center: [1.528984, 102.209263],
-    zoom: 17,
+    zoom: 14,
     layers: [peta2, groupLahan]
 });
 
@@ -39,7 +86,19 @@ var overlays = {
 
 var layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 <?php foreach ($lahan as $key => $value) { ?>
-var lahan = L.geoJSON(<?= $value->denah_geojson; ?>, {
+var lahan = L.geoJSON({
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [<?= $value->denah_tanah ?>]
+            ]
+        }
+    }]
+}, {
     style: {
         color: 'white',
         fillColor: '<?= $value->warna_lahan; ?>',
@@ -51,12 +110,17 @@ var lahan = L.geoJSON(<?= $value->denah_geojson; ?>, {
 }).addTo(groupLahan);
 lahan.eachLayer(function(layer) {
     layer.bindPopup(
-        "<p><img src='<?= base_url('gambar/' . $value->gambar); ?>' width=100/> </br>" +
-        "Nama Lahan : <?= $value->nama_lahan; ?></br>" +
-        "Isi Lahan : <?= $value->isi_lahan; ?></br>" +
-        "Pemilik Lahan : <?= $value->pemilik_lahan; ?></br>" +
-        "Alamat Lahan : <?= $value->alamat_pemilik; ?></br>" +
-        "</br><a href='' class='btn btn-sm btn-block btn-default'>View Detail Lahan</a>" +
+        "<p class='text-sm'><img src='<?= base_url('gambar/' . $value->file_gambar); ?>' width=200 height=130 class='justify-content-center d-flex m-auto' /> </br>" +
+        "<pre>Pemilik            : <?= $value->nama; ?></br>" +
+        "Panjang            : <?= $value->panjang; ?></br>" +
+        "Lebar              : <?= $value->lebar; ?></br>" +
+        "Luas               : <?= $value->luas; ?></br>" +
+        "Batas Barat        : <?= $value->batas_barat; ?></br>" +
+        "Batas Selatan      : <?= $value->batas_selatan; ?></br>" +
+        "Batas Timur        : <?= $value->batas_timur; ?></br>" +
+        "Batas Utara        : <?= $value->batas_utara; ?></br></pre>" +
+
+        "</br><a href='<?= base_url('lahan/LahanTanah/detailLahanTanah/' . $value->id_lahan_warga) ?>' class='main-btn success-btn-outline btn-hover'>View Detail Lahan</a>" +
         "</p>");
 });
 <?php } ?>

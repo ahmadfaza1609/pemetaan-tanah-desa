@@ -52,6 +52,8 @@
                     <div class="input-style-1">
                         <label>File Surat</label>
                         <input type="file" name="file_surat" />
+                        <small class="text-small">format file : <small
+                                class="text-danger text-small">.pdf</small></small>
                     </div>
                     <div class="input-style-3">
                         <textarea placeholder="Keterangan" name="ket" rows="5"><?= $pengarsipan->ket ?></textarea>

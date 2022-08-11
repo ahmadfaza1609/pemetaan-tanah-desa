@@ -7,7 +7,10 @@ class Admin extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
+        $this->load->library('session');
         $this->load->model('m_admin');
+        $this->load->model('dashboard/m_dashboard');
         $this->load->model('auth/m_auth');
         // if(!$this->m_auth->)
     }
@@ -17,8 +20,15 @@ class Admin extends MX_Controller
 
         $data = array(
             'title' => 'Pemetaan',
-            'isi'   => 'v_dashboard'
+            'lahan' => $this->m_dashboard->getTanahJoin(),
+            'isi'   => 'dashboard/v_dashboard',
         );
+        // $data['title'] = 'Pemetaan';
+        // $data['isi'] = 'dashboard/v_dashboard';
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
+
+        // echo 'Selamat Datang' . $data['user']['nama'];
+        // die();
 
         $this->load->view('admin/v_admin', $data, FALSE);
     }

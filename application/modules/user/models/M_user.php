@@ -8,6 +8,7 @@ class M_user extends CI_Model
     public function get_user()
     {
         $this->db->select('
+            tbl_user_regis.id_user_regis,
             tbl_user_regis.nama,
             tbl_user_regis.email,
             tbl_user_regis.role_id,
@@ -18,8 +19,13 @@ class M_user extends CI_Model
         $this->db->from('tbl_user_regis');
         $this->db->join('tbl_user_role', 'tbl_user_role.id_role_user = tbl_user_regis.role_id');
         $this->db->group_by('tbl_user_regis.id_user_regis');
-        $this->db->order_by('id_user_regis', 'desc');
+        $this->db->order_by('id_user_regis', 'asc');
         return $this->db->get()->result();
+    }
+
+    public function delUser($data)
+    {
+        $this->db->delete('tbl_user_regis', $data);
     }
 }
 

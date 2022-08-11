@@ -92,7 +92,8 @@ if ($this->session->flashdata('sukses')) {
                                 </td>
                                 <td>
                                     <p>
-                                        <a href="<?= base_url() ?>" class="text-success">
+                                        <a href="<?= base_url('lahan/LahanTanah/detailLahanTanah/' . $value->id_lahan_warga) ?>"
+                                            class="text-success">
                                             <i class="lni lni-eye"></i>
                                         </a>
                                         <a href="<?= base_url('lahan/LahanTanah/ubahLahanTanah/' . $value->id_lahan_warga); ?>"

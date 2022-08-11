@@ -43,7 +43,7 @@
                     <div class="col-sm-6">
 
                         <embed class="mt-3" src="<?= base_url('uploads_file/' . $arsip->file_surat) ?>"
-                            type="application/PDF" height="1000" width="100%"></embed>
+                            type="application/PDF" height="600" width="100%"></embed>
                     </div>
                 </div>
             </div>

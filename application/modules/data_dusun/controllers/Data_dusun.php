@@ -7,6 +7,7 @@ class Data_dusun extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('m_data_dusun');
     }
@@ -18,6 +19,7 @@ class Data_dusun extends MX_Controller
             'data_dusun'   => $this->m_data_dusun->getDataDusun(),
             'isi'           => 'v_data_dusun'
         );
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->view('admin/v_admin', $data, FALSE);
     }
@@ -47,6 +49,7 @@ class Data_dusun extends MX_Controller
                 'title' => 'Tambah Data Dusun',
                 'isi' => 'v_add_dusun'
             );
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
 
             $this->load->view('admin/v_admin', $data, FALSE);
         }
@@ -90,6 +93,7 @@ class Data_dusun extends MX_Controller
                 'data_dusun'    => $this->m_data_dusun->detail($id_data_dusun),
                 'isi'           => 'v_edit_dusun'
             );
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
 
             $this->load->view('admin/v_admin', $data, FALSE);
         }

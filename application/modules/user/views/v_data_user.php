@@ -25,9 +25,6 @@
                                     <h6>Role</h6>
                                 </th>
                                 <th>
-                                    <h6>User Aktif</h6>
-                                </th>
-                                <th>
                                     <h6>Created</h6>
                                 </th>
                                 <th class="text-center">
@@ -38,7 +35,7 @@
                         </thead>
                         <tbody>
                             <?php $no = 1;
-                            foreach ($user as $key => $value) { ?>
+                            foreach ($user_regis as $key => $value) { ?>
                             <tr>
                                 <td>
                                     <p><?= $no++ ?></p>
@@ -52,23 +49,25 @@
                                 <td>
                                     <p><?= $value->role ?></p>
                                 </td>
-                                <td>
+                                <!-- <td>
 
                                     <div class="form-check form-switch toggle-switch mb-30">
                                         <input class="form-check-input" type="checkbox"
                                             <?= $value->user_aktif == '1' ? 'checked' : '' ?> id="toggleSwitch1" />
                                     </div>
-                                </td>
+                                </td> -->
                                 <td>
-                                    <p><?= $value->date_created ?></p>
+                                    <p><?= date('d F Y', $value->date_created) ?></p>
                                 </td>
                                 <td class=" text-center">
                                     <p>
-                                        <a href="<?= base_url(); ?>" class="text-warning">
+                                        <a href="<?= base_url('user/ubahUser/' . $value->id_user_regis); ?>"
+                                            class="text-warning">
                                             <i class="lni lni-pencil-alt ml-2 mr-2"></i>
                                         </a>
-                                        <a href="<?= base_url() ?>"
-                                            onclick="return confirm('Apakah yakin data dihapus ?')" class="text-danger">
+                                        <a href="<?= base_url('user/hapusUser/' . $value->id_user_regis) ?>"
+                                            onclick="return confirm('Apakah yakin user <?= $value->nama ?> dihapus ?')"
+                                            class="text-danger">
                                             <i class="lni lni-trash-can"></i>
                                         </a>
                                     </p>

@@ -1,5 +1,5 @@
 <div class="navbar-logo">
-    <a href="#">
+    <a href="<?= base_url() ?>">
         <img src="<?= base_url() ?>style-admin/assets/images/logo/logoKabBengkalis.png" width="20%" alt="logo" />
         <span>Pemetaan Dan Arsip </br> Desa Bantan Tengah</span>
     </a>
@@ -35,7 +35,7 @@
                 <li>
                     <a href="<?= base_url('lahan/LahanJumlah/') ?>"> Data Kumpulan Tanah </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="<?= base_url('lahan/index') ?>"> Data Tanah </a>
                 </li>
                 <li>
@@ -43,7 +43,7 @@
                 </li>
                 <li>
                     <a href="<?= base_url('lahan/galeri_lahan') ?>"> Galeri Tanah</a>
-                </li>
+                </li> -->
 
             </ul>
         </li>
@@ -59,9 +59,9 @@
                 <span class="text">Pengarsipan</span>
             </a>
             <ul id="ddmenu_3" class="collapse dropdown-nav">
-                <li>
+                <!-- <li>
                     <a href="<?= base_url('jenis_surat/get_arsip') ?>"> Data Arsip </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="<?= base_url('pengarsipan/') ?>"> Pengarsipan </a>
                 </li>
@@ -99,7 +99,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="<?= base_url('user/') ?>">
                 <span class="icon">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,7 +109,7 @@
                 </span>
                 <span class="text">User</span>
             </a>
-        </li>
+        </li> -->
         <span class="divider">
             <hr />
         </span>

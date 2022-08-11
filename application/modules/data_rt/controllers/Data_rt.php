@@ -7,6 +7,7 @@ class Data_rt extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('m_data_rt');
     }
@@ -18,7 +19,7 @@ class Data_rt extends MX_Controller
             'data_rt' => $this->m_data_rt->get_data_rt(),
             'isi' => 'v_data_rt'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -47,7 +48,7 @@ class Data_rt extends MX_Controller
                 'title' => 'Tambah Data RT',
                 'isi' => 'v_add_rt'
             );
-
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }
@@ -89,7 +90,7 @@ class Data_rt extends MX_Controller
                 'data_rt'   => $this->m_data_rt->detail($id_data_rt),
                 'isi'       => 'v_edit_rt'
             );
-
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }

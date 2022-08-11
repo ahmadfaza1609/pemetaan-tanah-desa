@@ -9,6 +9,7 @@ class LahanJumlah extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('m_lahanJumlah');
         $this->load->model('m_lahanTanah');
     }
@@ -23,7 +24,7 @@ class LahanJumlah extends MX_Controller
         // $data = json_encode($data, true);
         // var_dump($data);
         // die();
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -56,7 +57,7 @@ class LahanJumlah extends MX_Controller
                     'jumlah_tanah'  => $this->m_lahanJumlah->getTanahPem($id_lahan_warga),
                     'isi'           => 'lahan/v_tanahWarga'
                 );
-
+                $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('admin/v_admin', $data, FALSE);
             } else {
                 $upload_data = array('uploads' => $this->upload->data());
@@ -66,7 +67,7 @@ class LahanJumlah extends MX_Controller
                 $this->load->library('image_lib', $config);
 
                 $data = array(
-                    'id_penduduk'   => $$id_lahan_warga,
+                    'id_penduduk'   => $id_lahan_warga,
                     'panjang'       => $this->input->post('panjang'),
                     'lebar'         => $this->input->post('lebar'),
                     'luas'          => $this->input->post('luas'),
@@ -88,6 +89,7 @@ class LahanJumlah extends MX_Controller
             'jumlah_tanah'  => $this->m_lahanJumlah->getTanahPem($id_lahan_warga),
             'isi'   => 'v_tanahWarga'
         );
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->view('admin/v_admin', $data, FALSE);
     }

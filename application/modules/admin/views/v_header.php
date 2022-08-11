@@ -31,7 +31,8 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="profile-info">
                                 <div class="info">
-                                    <h6>Admin</h6>
+                                    <h6><?= $user['nama'] ?></h6>
+                                    <!-- <h6>Admin</h6> -->
                                     <div class="image">
                                         <img src="<?= base_url() ?>style-admin/assets/images/profile/profile-image.png"
                                             alt="" />

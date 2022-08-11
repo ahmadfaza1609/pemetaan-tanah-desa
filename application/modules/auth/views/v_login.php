@@ -40,12 +40,12 @@
                         </div>
                         <!-- end row -->
                         <?php echo form_close() ?>
-                        <div class="singin-option pt-40">
+                        <!-- <div class="singin-option pt-40">
                             <p class="text-sm text-medium text-dark text-center">
                                 Belum punya akun ni?
                                 <a href="<?= base_url('auth/register') ?>">Buat akun sekarang dong</a>
                             </p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

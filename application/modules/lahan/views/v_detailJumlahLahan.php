@@ -24,9 +24,9 @@
                                 <th>
                                     <h6>Jumlah Tanah</h6>
                                 </th>
-                                <th class="text-center">
+                                <!-- <th class="text-center">
                                     <h6>Action</h6>
-                                </th>
+                                </th> -->
                             </tr>
                             <!-- end table row-->
                         </thead>
@@ -47,14 +47,14 @@
                                     <p><span class="badge bg-primary px-3 py-2"><?= $value->total_tanah ?>
                                             Lahan Tanah</span></p>
                                 </td>
-
+                                <!-- 
                                 <td class=" text-center">
 
                                     <a href="<?= base_url('lahan/LahanJumlah/tambahTanahWarga/' . $value->id_penduduk) ?>"
                                         class="main-btn success-btn btn-sm btn-hover"><i class="lni lni-plus me-2"></i>
                                         Tambah Lahan</a>
 
-                                </td>
+                                </td> -->
 
                             </tr>
                             <?php } ?>

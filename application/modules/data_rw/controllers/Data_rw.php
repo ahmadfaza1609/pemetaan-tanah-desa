@@ -7,6 +7,7 @@ class Data_rw extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('m_data_rw');
     }
@@ -18,7 +19,7 @@ class Data_rw extends MX_Controller
             'data_rw' => $this->m_data_rw->get_data_rw(),
             'isi' => 'v_data_rw'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -47,7 +48,7 @@ class Data_rw extends MX_Controller
                 'title' => 'Tambah Data RW',
                 'isi' => 'v_add_rw'
             );
-
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }
@@ -89,7 +90,7 @@ class Data_rw extends MX_Controller
                 'data_rw'   => $this->m_data_rw->detail($id_data_rw),
                 'isi'       => 'v_edit_rw'
             );
-
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }

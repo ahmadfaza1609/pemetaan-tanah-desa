@@ -20,7 +20,7 @@ if (isset($error_upload)) {
 
                     <div class="col-sm-6">
                         <?php
-                        echo form_open_multipart('lahan/LahanJumlah/tambahTanahWarga/' . $jumlah_tanah->id_lahan_warga); ?>
+                        echo form_open_multipart('lahan/LahanJumlah/tambahTanahWarga/'); ?>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -77,6 +77,8 @@ if (isset($error_upload)) {
                                     <label>Gambar Lahan</label>
                                     <input type="file" class="form-control" name="file_gambar"
                                         value="<?= set_value('file_gambar') ?>">
+                                    <small class="text-small">format file : <small class="text-danger text-small">.jpg
+                                            .jpeg .png .gif</small></small>
                                     <?= form_error('file_gambar', '<small class="text-danger">', '</small>') ?>
                                 </div>
                             </div>

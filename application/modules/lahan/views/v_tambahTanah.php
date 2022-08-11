@@ -20,7 +20,7 @@ if (isset($error_upload)) {
 
                     <div class="col-sm-6">
                         <?php
-                        echo form_open_multipart('lahan/LahanTanah/tambahTanah'); ?>
+                        echo form_open_multipart('lahan/LahanTanah/tambahTanah/'); ?>
                         <div class="form-group">
                             <div class="select-style-1">
                                 <label>NIK</label>
@@ -86,12 +86,10 @@ if (isset($error_upload)) {
                                 <div class="form-group">
                                     <div class="input-style-1">
                                         <label>Warna Lahan</label>
-                                        <div class="input-group my-colorpicker2">
-                                            <input type="text" name="warna_lahan" class="form-control"
+                                        <div class="input-group">
+                                            <input type="color" name="warna_lahan" class="form-control py-2 my-3"
                                                 value="<?= set_value('warna_lahan') ?>">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -104,6 +102,8 @@ if (isset($error_upload)) {
                                     <label>Gambar Lahan</label>
                                     <input type="file" class="form-control" name="file_gambar"
                                         value="<?= set_value('file_gambar') ?>">
+                                    <small class="text-small">format file : <small class="text-danger text-small">.jpg
+                                            .jpeg .png .gif</small></small>
                                     <?= form_error('file_gambar', '<small class="text-danger">', '</small>') ?>
                                 </div>
                             </div>
@@ -169,6 +169,7 @@ if (isset($error_upload)) {
 </div>
 
 <script type="text/javascript">
+var groupLahan = L.layerGroup();
 var peta1 = L.tileLayer(
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -189,7 +190,7 @@ var peta3 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var map = L.map('map', {
     center: [1.528984, 102.209263],
     zoom: 14,
-    layers: [peta2]
+    layers: [peta2, groupLahan]
 });
 
 var baseLayers = {
@@ -199,11 +200,50 @@ var baseLayers = {
 };
 
 var overlays = {
-
+    "lahan": groupLahan
 };
 
-var layerControl = L.control.layers(baseLayers).addTo(map);
+var layerControl = L.control.layers(baseLayers, overlays).addTo(map);
+<?php foreach ($lahan as $key => $value) { ?>
+var lahan = L.geoJSON({
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [<?= $value->denah_tanah ?>]
+            ]
+        }
+    }]
+}, {
+    style: {
+        color: 'white',
+        fillColor: '<?= $value->warna_lahan; ?>',
+        fillOpacity: 0.3,
+        dashArray: '3',
+        lineCap: 'butt',
+        lineJoin: 'miter'
+    }
+}).addTo(groupLahan);
+lahan.eachLayer(function(layer) {
+    layer.bindPopup(
+        "<p class='text-sm'><img src='<?= base_url('gambar/' . $value->file_gambar); ?>' width=200 height=130 class='justify-content-center d-flex m-auto' /> </br>" +
+        "<pre>Pemilik            : <?= $value->nama; ?></br>" +
+        "Panjang            : <?= $value->panjang; ?></br>" +
+        "Lebar              : <?= $value->lebar; ?></br>" +
+        "Luas               : <?= $value->luas; ?></br>" +
+        "Batas Barat        : <?= $value->batas_barat; ?></br>" +
+        "Batas Selatan      : <?= $value->batas_selatan; ?></br>" +
+        "Batas Timur        : <?= $value->batas_timur; ?></br>" +
+        "Batas Utara        : <?= $value->batas_utara; ?></br></pre>" +
 
+        "</br><a href='<?= base_url('lahan/LahanTanah/detailLahanTanah/' . $value->id_lahan_warga) ?>' class='main-btn success-btn-outline btn-hover'>View Detail Lahan</a>" +
+        "</p>");
+});
+
+<?php } ?>
 // FeatureGroup is to store editable layers
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
@@ -229,14 +269,14 @@ map.on('draw:created', function(event) {
     feature.type = feature.type || 'Feature';
     var props = feature.properties = feature.properties || {};
     drawnItems.addLayer(layer);
-    $("[name=denah_tanah]").html(JSON.stringify(drawnItems.toGeoJSON()));
+    $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
 });
 
 map.on('draw:edited', function(event) {
-    $("[name=denah_tanah]").html(JSON.stringify(drawnItems.toGeoJSON()));
+    $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
 });
 
 map.on('draw:deleted', function(event) {
-    $("[name=denah_tanah]").html(JSON.stringify(drawnItems.toGeoJSON()));
+    $("[name=denah_geojson]").html(JSON.stringify(drawnItems.toGeoJSON()));
 });
 </script>

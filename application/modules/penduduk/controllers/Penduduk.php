@@ -8,6 +8,7 @@ class Penduduk extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('m_penduduk');
         $this->load->model('data_dusun/m_data_dusun');
@@ -22,6 +23,7 @@ class Penduduk extends MX_Controller
             'penduduk'      => $this->m_penduduk->getPenduduk(),
             'isi'           => 'v_data_penduduk'
         );
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -54,6 +56,7 @@ class Penduduk extends MX_Controller
                 'data_rt'       => $this->m_data_rt->get_data_rt(),
                 'isi'           => 'v_add_penduduk'
             );
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }
@@ -100,6 +103,7 @@ class Penduduk extends MX_Controller
                 'data_rt'       => $this->m_data_rt->get_data_rt($id_penduduk),
                 'isi'           => 'v_edit_penduduk'
             );
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }

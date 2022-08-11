@@ -7,6 +7,7 @@ class Jenis_surat extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('m_jenis_surat');
     }
@@ -18,7 +19,7 @@ class Jenis_surat extends MX_Controller
             'jenis_surat'   => $this->m_jenis_surat->getJenisSurat(),
             'isi'           => 'v_data_jenis'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -31,7 +32,7 @@ class Jenis_surat extends MX_Controller
             'arsip_surat'   => $this->m_jenis_surat->get_arsip(),
             'isi'           => 'v_arsip'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -63,6 +64,7 @@ class Jenis_surat extends MX_Controller
                     'data_dusun'    => $this->m_jenis_surat->get_data_dusun(),
                     'isi'           => 'v_tambah_arsip'
                 );
+                $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('admin/v_admin', $data, FALSE);
             } else {
                 $upload_data = $this->upload->data();
@@ -92,7 +94,7 @@ class Jenis_surat extends MX_Controller
             'data_dusun'    => $this->m_jenis_surat->get_data_dusun(),
             'isi'           => 'v_tambah_arsip'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -113,6 +115,7 @@ class Jenis_surat extends MX_Controller
             'arsip' => $this->m_jenis_surat->get_detail_arsip($id_arsip),
             'isi'   => 'v_detail_arsip'
         );
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -187,7 +190,7 @@ class Jenis_surat extends MX_Controller
             'data_dusun'    => $this->m_jenis_surat->get_data_dusun($id_arsip),
             'isi'           => 'v_edit_arsip'
         );
-
+        $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
@@ -217,7 +220,7 @@ class Jenis_surat extends MX_Controller
                 'title' => 'Tambah Jenis Surat',
                 'isi' => 'v_add_jenis'
             );
-
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }
@@ -255,7 +258,7 @@ class Jenis_surat extends MX_Controller
                 'jenis_surat'   => $this->m_jenis_surat->detail($id_jenis_surat),
                 'isi'           => 'v_edit_jenis'
             );
-
+            $data['user'] = $this->db->get_where('tbl_user_regis', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/v_admin', $data, FALSE);
         }
     }
