@@ -5,10 +5,10 @@
              <div class="col-md-6 order-last order-md-first">
                  <div class="copyright text-center text-md-start">
                      <p class="text-sm">
-                         Designed by <a href="https://plainadmin.com" rel="nofollow" target="_blank">
-                             PlainAdmin
+                         Designed by <a href="https://www.instagram.com/ahmadfaza16___/" rel="nofollow" target="_blank">
+                             Ahmadfaza16___
                          </a> and Developed by
-                         <a href="#" rel="nofollow" target="_blank">
+                         <a href="https://github.com/ahmadfaza1609" rel="nofollow" target="_blank">
                              AhmadFazaHazmi
                          </a>
                      </p>
