@@ -7,7 +7,7 @@ class Dashboard extends MX_Controller
     {
         parent::__construct();
         is_logged_in();
-        $this->load->model('lahan/m_lahanTanah');
+        // $this->load->model('lahan/m_lahanTanah');
         $this->load->model('penduduk/m_penduduk');
         $this->load->model('m_dashboard');
     }
@@ -21,7 +21,6 @@ class Dashboard extends MX_Controller
             'jumlah_lahan'  => $this->m_dashboard->getJumlahLahan(),
             'jumlah_penduduk'  => $this->m_dashboard->getJumlahPenduduk(),
             'jumlah_surat'  => $this->m_dashboard->getJumlahSurat(),
-            'jumlah_user'  => $this->m_dashboard->getJumlahUser(),
             'isi'           => 'v_dashboard'
         );
         // $data['jumlah_lahan'] = $this->m_dashboard->getJumlahLahan();
@@ -32,15 +31,15 @@ class Dashboard extends MX_Controller
         $this->load->view('admin/v_admin', $data, FALSE);
     }
 
-    public function detail_lahan($id_lahan)
-    {
-        $data = array(
-            'title' => 'Detail Lahan Pertanahan',
-            'lahan' => $this->m_lahan->detail($id_lahan),
-            'foto'  => $this->m_lahan->detail_galeri($id_lahan),
-            'isi'   => 'lahan/v_detail_lahan'
-        );
+    // public function detail_lahan($id_lahan)
+    // {
+    //     $data = array(
+    //         'title' => 'Detail Lahan Pertanahan',
+    //         'lahan' => $this->m_lahan->detail($id_lahan),
+    //         'foto'  => $this->m_lahan->detail_galeri($id_lahan),
+    //         'isi'   => 'lahan/v_detail_lahan'
+    //     );
 
-        $this->load->view('admin/v_admin', $data, FALSE);
-    }
+    //     $this->load->view('admin/v_admin', $data, FALSE);
+    // }
 }

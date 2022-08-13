@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xl-3 col-lg-4 col-sm-6">
+    <div class="col-xl-4 col-lg-4 col-sm-6">
         <div class="icon-card mb-30">
             <div class="icon purple">
                 <i class="lni lni-layers"></i>
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-4 col-sm-6">
+    <div class="col-xl-4 col-lg-4 col-sm-6">
         <div class="icon-card mb-30">
             <div class="icon success">
                 <i class="lni lni-users"></i>
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-4 col-sm-6">
+    <div class="col-xl-4 col-lg-4 col-sm-6">
         <div class="icon-card mb-30">
             <div class="icon primary">
                 <i class="lni lni-map"></i>
@@ -29,17 +29,6 @@
             <div class="content">
                 <h6 class="mb-10">Jumlah Lahan</h6>
                 <h3 class="text-bold"><?= $jumlah_lahan ?> Lahan</h3>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-4 col-sm-6">
-        <div class="icon-card mb-30">
-            <div class="icon orange">
-                <i class="lni lni-user"></i>
-            </div>
-            <div class="content">
-                <h6 class="mb-10">User</h6>
-                <h3 class="text-bold"><?= $jumlah_user ?> User</h3>
             </div>
         </div>
     </div>
