@@ -9,7 +9,7 @@
                     <?= $title ?> Desa Bantan Tengah yang terdaftar di pemerintahan desa.
                 </p>
                 <div class="table-wrapper table-responsive">
-                    <table class="table">
+                    <table id="table" class="table table-responsive">
                         <thead>
                             <tr>
                                 <th>

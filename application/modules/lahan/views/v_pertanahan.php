@@ -23,7 +23,7 @@ if ($this->session->flashdata('sukses')) {
                     <?= $title ?> masyarakat yang terdaftar di desa
                 </p>
                 <div class="table-wrapper table-responsive overflow-auto">
-                    <table class="table">
+                    <table id="table" class="table">
                         <thead>
                             <tr>
                                 <th>
