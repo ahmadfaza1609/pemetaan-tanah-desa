@@ -11,7 +11,7 @@
                     <?= $title ?> Desa Bantan Tengah yang terdaftar di pemerintahan desa.
                 </p>
                 <div class="table-wrapper table-responsive">
-                    <table class="table">
+                    <table id="table" class="table">
                         <thead>
                             <tr>
                                 <th>
@@ -35,9 +35,7 @@
                                 <th>
                                     <h6>Jenis Surat</h6>
                                 </th>
-                                <th>
-                                    <h6>File Surat</h6>
-                                </th>
+
                                 <th>
                                     <h6>Ket</h6>
                                 </th>
@@ -72,9 +70,7 @@
                                 <td>
                                     <p><?= $value->nama_surat ?></p>
                                 </td>
-                                <td>
-                                    <p><?= $value->file_surat ?></p>
-                                </td>
+
                                 <td>
                                     <p><?= $value->ket ?></p>
                                 </td>
