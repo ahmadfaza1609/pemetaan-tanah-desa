@@ -1,4 +1,4 @@
-<section class="signin-section shadow-sm">
+<section class="signin-section mt-100">
     <div class="container m-auto ">
         <div class="row d-flex m-auto align-items-center justify-content-center">
             <div class="col-lg-6 mt-3">
