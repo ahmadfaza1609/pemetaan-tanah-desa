@@ -10,8 +10,8 @@
                 <p class="text-sm mb-20 mt-4">
                     <?= $title ?> Desa Bantan Tengah yang terdaftar di pemerintahan desa.
                 </p>
-                <div class="table-wrapper table-responsive">
-                    <table id="table" class="table">
+                <div class="table-responsive">
+                    <table id="table" class="table table-striped table-centered text-truncate">
                         <thead>
                             <tr>
                                 <th>
