@@ -38,13 +38,6 @@ class M_dashboard extends CI_Model
         $this->db->from('tbl_penduduk');
         return $this->db->get()->num_rows();
     }
-
-    public function getJumlahUser()
-    {
-        $this->db->select('*');
-        $this->db->from('tbl_user_regis');
-        return $this->db->get()->num_rows();
-    }
 }
 
 /* End of file M_dashboard.php */
